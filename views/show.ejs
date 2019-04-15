@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+<div class="container main">
+    <h1 class="detail-heading"><%= news[0].title %></h1>
+    <img src="<%= news[0].image %>" alt="Image not available" class="detail-image"><br>
+    <br><p class="detail-date"><%= news[0].published.substring(0,10) %></p>
+    <% var text = news[0].content.replace(" Download The Times of India News App for Latest Business News . (This story has not been edited by timesofindia.com and is auto–generated from a syndicated feed we subscribe to.) Read Post a comment All Comments () + ^ Back to Top Characters Remaining: 3000", "") %>
+    <% text = text.replace("Download The Times of India News App for Latest City News . (This story has not been edited by timesofindia.com and is auto–generated from a syndicated feed we subscribe to.) Read Post a comment All Comments () + ^ Back to Top Characters Remaining: 3000", "") %>
+    <% text = text.replace("Download The Times of India News App for Latest Sports News . Read Post a comment All Comments () + ^ Back to Top Characters Remaining: 3000", "") %>
+    <% if (text.substring(0, 11) == "Virat Kohli"){ %>
+    <% text = text.replace(text.substring(0,12), ""); }%>
+    <p class="detail-content"><%= text %></p>
+    <br>
+    <div class="detail-links">
+        <a href="/">Home</a> | <a href="/news/sports">Sports</a> | <a href="/news/business">Business</a> | <a href="/news/bollywood">Bollywood</a> | <a href="/news/politics">Politics</a> | <a href="/news/misc">Miscellaneous</a>  
+    </div>
+</div>
+    
+<% include ./partials/footer %>

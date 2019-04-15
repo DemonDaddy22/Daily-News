@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+
+<div class="container main">
+    <div class="jumbotron">
+        <h1><%=title.toUpperCase() %> HEADLINES</h1>
+    </div>
+    
+    <% var i = 0; %>
+    <div class="row">
+        <% while (i<12){ %>
+            <div class="col-md-6 col-sm-12">
+                <div class="thumbnail">
+                    <img src="<%= data["posts"][i]["thread"]["main_image"] %>" alt="Image not available" class="image">
+                    <div class="caption">
+                        <a href="/news/content/<%= data["posts"][i]["uuid"] %>"><h2><%= data["posts"][i]["title"] %></h2></a>
+                        <% var text = data["posts"][i]["text"] %>
+                        <% if (text.substring(0, 11) === "Virat Kohli"){ %>
+                        <% text = text.replace(text.substring(0,12), ""); }%>
+                        <p><%= text.substring(0,201) %>...</p>
+                        <a href="/news/content/<%= data["posts"][i]["uuid"] %>" class="btn btn-primary btn-lg">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <% i++; } %>
+    </div>
+</div>
+
+<% include ./partials/footer %>
